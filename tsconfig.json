@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "preserveSymlinks": true,
+    "outDir": "build/src",
+    "moduleResolution": "node",
+    "target": "es5",
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "importHelpers": true,
+    "noEmitHelpers": true,
+    "noUnusedLocals": true,
+    "jsx": "preserve",
+    "lib": ["es5", "dom"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  }
+}
