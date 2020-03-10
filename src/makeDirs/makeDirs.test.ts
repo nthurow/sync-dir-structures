@@ -5,7 +5,7 @@ describe('makeDirs', () => {
   it('should generate a list of commands to synchronize directory structures', () => {
     const desiredStructure: DirTree = {
       type: 'directory',
-      name: 'desiredStruct',
+      name: 'desiredStruct/subDesiredStruct',
       contents: [
         {
           type: 'directory',
@@ -28,32 +28,15 @@ describe('makeDirs', () => {
       ]
     };
 
-    const actualStructure: DirTree = {
-      type: 'directory',
-      name: 'actualStruct',
-      contents: [
-        {
-          type: 'directory',
-          name: 'fooA',
-          contents: [
-            {type: 'directory', name: 'fooB', contents: []},
-            {type: 'file', name: 'file2'}
-          ]
-        },
-        {
-          type: 'directory',
-          name: 'fooC',
-          contents: [
-            {type: 'directory', name: 'fooE', contents: []},
-            {type: 'file', name: 'file1'}
-          ]
-        }
-      ]
-    };
+    const expectedResult = [
+      'mkdir ../outDir/fooA',
+      'mkdir ../outDir/fooA/fooB',
+      'mkdir ../outDir/fooC',
+      'mkdir ../outDir/fooC/fooD',
+      'mkdir ../outDir/fooE'
+    ];
 
-    const expectedResult = ['mkdir ./fooC/fooD', 'mkdir ./fooE'];
-
-    const actualResult = makeDirs(desiredStructure, actualStructure);
+    const actualResult = makeDirs(desiredStructure, '../outDir');
 
     expect(actualResult).toEqual(expectedResult);
   });

@@ -5,7 +5,7 @@ interface FileTree {
   path: string;
 }
 
-function buildFileList(struct: DirTree, rootDir = '.'): FileTree[] {
+function buildFileList(struct: DirTree, rootDir: string): FileTree[] {
   if (!struct.contents) {
     throw new Error('Received file, expected directory');
   }
@@ -29,9 +29,9 @@ function buildFileList(struct: DirTree, rootDir = '.'): FileTree[] {
   return [...files, ...dirs];
 }
 
-export function moveFiles(desiredStructure: DirTree, actualStructure: DirTree) {
-  const desiredFileList = buildFileList(desiredStructure);
-  const actualFileList = buildFileList(actualStructure);
+export function moveFiles(desiredStructure: DirTree, actualStructure: DirTree, outDir: string) {
+  const desiredFileList = buildFileList(desiredStructure, outDir);
+  const actualFileList = buildFileList(actualStructure, actualStructure.name);
 
   return desiredFileList
     .filter((desiredFile) => {

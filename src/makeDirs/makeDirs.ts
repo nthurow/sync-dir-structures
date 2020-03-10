@@ -19,14 +19,10 @@ function getDirs(tree: DirTree, root = '.'): string[] {
     }, []);
 }
 
-export function makeDirs(desired: DirTree, actual: DirTree) {
-  const desiredDirs = getDirs(desired);
-  const actualDirs = getDirs(actual);
+export function makeDirs(desired: DirTree, outDir: string) {
+  const desiredDirs = getDirs(desired, outDir);
 
   return desiredDirs
-    .filter((desiredDir) => {
-      return actualDirs.indexOf(desiredDir) === -1;
-    })
     .map((missingDir) => {
       return `mkdir ${missingDir}`;
     });

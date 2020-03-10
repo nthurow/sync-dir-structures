@@ -5,7 +5,7 @@ describe('moveFiles', () => {
   it('should generate a list of commands to synchronize file structures', () => {
     const desiredStructure: DirTree = {
       type: 'directory',
-      name: 'desiredStruct',
+      name: '../desiredStruct',
       contents: [
         {
           type: 'directory',
@@ -30,7 +30,7 @@ describe('moveFiles', () => {
 
     const actualStructure: DirTree = {
       type: 'directory',
-      name: 'actualStruct',
+      name: 'actualStruct/subStruct',
       contents: [
         {
           type: 'directory',
@@ -51,12 +51,12 @@ describe('moveFiles', () => {
 
     // TODO: Make this immutable (move to a different directory)
     const expectedResult = [
-      'mv ./file1 ./fooA/file1',
-      'mv ./fooA/file4 ./fooA/fooB/file4',
-      'mv ./fooC/fooE/file2 ./fooC/file2'
+      'mv actualStruct/subStruct/file1 /final/dest/fooA/file1',
+      'mv actualStruct/subStruct/fooA/file4 /final/dest/fooA/fooB/file4',
+      'mv actualStruct/subStruct/fooC/fooE/file2 /final/dest/fooC/file2'
     ];
 
-    const actualResult = moveFiles(desiredStructure, actualStructure);
+    const actualResult = moveFiles(desiredStructure, actualStructure, '/final/dest');
 
     expect(actualResult).toEqual(expectedResult);
   });
