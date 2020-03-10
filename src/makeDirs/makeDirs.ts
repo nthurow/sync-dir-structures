@@ -28,6 +28,6 @@ export function makeDirs(desired: DirTree, actual: DirTree) {
       return actualDirs.indexOf(desiredDir) === -1;
     })
     .map((missingDir) => {
-      return `mkdir -p ${missingDir}`;
+      return `mkdir ${missingDir}`;
     });
 }

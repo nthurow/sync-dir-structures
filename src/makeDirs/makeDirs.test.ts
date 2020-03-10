@@ -51,7 +51,7 @@ describe('makeDirs', () => {
       ]
     };
 
-    const expectedResult = ['mkdir -p ./fooC/fooD', 'mkdir -p ./fooE'];
+    const expectedResult = ['mkdir ./fooC/fooD', 'mkdir ./fooE'];
 
     const actualResult = makeDirs(desiredStructure, actualStructure);
 
