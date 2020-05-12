@@ -3,13 +3,13 @@ import {join} from 'path';
 
 import {DirTree} from '../DirTree';
 
-function getDirContentsAsTree(root: string, path: string): DirTree[] {
-  return readdirSync(join(root, path), {withFileTypes: true}).map((item) => {
+function getDirContentsAsTree(path: string): DirTree[] {
+  return readdirSync(path, {withFileTypes: true}).map((item) => {
     if (item.isDirectory()) {
       return {
         name: item.name,
         type: 'directory',
-        contents: getDirContentsAsTree(root, join(path, item.name))
+        contents: getDirContentsAsTree(join(path, item.name))
       };
     } else {
       return {
@@ -20,10 +20,10 @@ function getDirContentsAsTree(root: string, path: string): DirTree[] {
   });
 }
 
-export function pathToDirTree(root: string, path: string): DirTree {
+export function pathToDirTree(path: string): DirTree {
   return {
     name: path,
     type: 'directory',
-    contents: getDirContentsAsTree(root, path)
+    contents: getDirContentsAsTree(path)
   };
 }

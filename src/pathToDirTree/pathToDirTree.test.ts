@@ -55,7 +55,7 @@ describe('pathToDirTree', () => {
     });
 
     const expectedResult: DirTree = {
-      name: 'rootDir',
+      name: 'rootPath/rootDir',
       type: 'directory',
       contents: [
         {
@@ -100,7 +100,7 @@ describe('pathToDirTree', () => {
       ]
     };
 
-    const actualResult = pathToDirTree('rootPath', 'rootDir');
+    const actualResult = pathToDirTree('rootPath/rootDir');
 
     expect(actualResult).toEqual(expectedResult);
   });
