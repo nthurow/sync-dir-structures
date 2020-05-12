@@ -51,9 +51,9 @@ describe('moveFiles', () => {
 
     // TODO: Make this immutable (move to a different directory)
     const expectedResult = [
-      'mv actualStruct/subStruct/file1 /final/dest/fooA/file1',
-      'mv actualStruct/subStruct/fooA/file4 /final/dest/fooA/fooB/file4',
-      'mv actualStruct/subStruct/fooC/fooE/file2 /final/dest/fooC/file2'
+      'cp actualStruct/subStruct/file1 /final/dest/fooA/file1',
+      'cp actualStruct/subStruct/fooA/file4 /final/dest/fooA/fooB/file4',
+      'cp actualStruct/subStruct/fooC/fooE/file2 /final/dest/fooC/file2'
     ];
 
     const actualResult = moveFiles(desiredStructure, actualStructure, '/final/dest');
