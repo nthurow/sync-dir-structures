@@ -9,8 +9,8 @@ export function main(desiredDirPath: string, fileDirPath: string, outputPath: st
   const makeDirsCmds = makeDirs(desiredDirTree, outputPath);
   const mvFilesCmds = moveFiles(desiredDirTree, actualDirTree, outputPath);
 
-  makeDirsCmds.forEach(console.log);
-  mvFilesCmds.forEach(console.log);
+  makeDirsCmds.forEach((cmd) => console.log(cmd));
+  mvFilesCmds.forEach((cmd) => console.log(cmd));
 }
 
 main('/mnt/drives/Storage/google_drive_pictures', '/mnt/drives/Storage/pictures', '/new-dir');
