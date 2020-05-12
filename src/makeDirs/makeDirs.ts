@@ -22,8 +22,7 @@ function getDirs(tree: DirTree, root = '.'): string[] {
 export function makeDirs(desired: DirTree, outDir: string) {
   const desiredDirs = getDirs(desired, outDir);
 
-  return desiredDirs
-    .map((missingDir) => {
-      return `mkdir ${missingDir}`;
-    });
+  return desiredDirs.map((missingDir) => {
+    return `mkdir "${missingDir}"`;
+  });
 }

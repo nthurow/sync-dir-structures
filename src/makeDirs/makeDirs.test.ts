@@ -29,11 +29,11 @@ describe('makeDirs', () => {
     };
 
     const expectedResult = [
-      'mkdir ../outDir/fooA',
-      'mkdir ../outDir/fooA/fooB',
-      'mkdir ../outDir/fooC',
-      'mkdir ../outDir/fooC/fooD',
-      'mkdir ../outDir/fooE'
+      'mkdir "../outDir/fooA"',
+      'mkdir "../outDir/fooA/fooB"',
+      'mkdir "../outDir/fooC"',
+      'mkdir "../outDir/fooC/fooD"',
+      'mkdir "../outDir/fooE"'
     ];
 
     const actualResult = makeDirs(desiredStructure, '../outDir');
