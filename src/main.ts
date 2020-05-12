@@ -13,4 +13,4 @@ export function main(desiredDirPath: string, fileDirPath: string, outputPath: st
   mvFilesCmds.forEach((cmd) => console.log(cmd));
 }
 
-main('/mnt/drives/Storage/google_drive_pictures', '/mnt/drives/Storage/pictures', '/new-dir');
+main('/mnt/drives/Storage/google_drive_pictures', '/mnt/drives/Storage/pictures', '/mnt/drives/Storage/pics_temp');
