@@ -9,3 +9,4 @@ $ rsync -rvnci /src/dir /dest/dir
 TODO:
  - If file exists in source but not in dest, copy it
  - Update timestamps of all images files to match image metadata
+ - Make sure timestamps and attributes are correct
