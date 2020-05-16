@@ -40,7 +40,7 @@ export function moveFiles(desiredStructure: DirTree, actualStructure: DirTree, o
     .map((desiredFile) => {
       const actualFile = actualFileList.find((node) => node.name === desiredFile.name);
 
-      return actualFile && `cp "${actualFile.path}" "${desiredFile.path}"`;
+      return actualFile && `cp -p "${actualFile.path}" "${desiredFile.path}"`;
     })
     .filter((operation) => !!operation);
 }
