@@ -1,3 +1,4 @@
+import {join} from 'path';
 import {DirTree} from '../DirTree';
 
 interface FileTree {
@@ -30,17 +31,22 @@ function buildFileList(struct: DirTree, rootDir: string): FileTree[] {
 }
 
 export function moveFiles(desiredStructure: DirTree, actualStructure: DirTree, outDir: string) {
+  const sourceFileList = buildFileList(desiredStructure, '');
   const desiredFileList = buildFileList(desiredStructure, outDir);
   const actualFileList = buildFileList(actualStructure, actualStructure.name);
 
   return desiredFileList
-    .filter((desiredFile) => {
-      return !actualFileList.find((node) => node.path === desiredFile.path);
-    })
     .map((desiredFile) => {
       const actualFile = actualFileList.find((node) => node.name === desiredFile.name);
+      const sourceFile = sourceFileList.find((node) => node.name === desiredFile.name);
 
-      return actualFile && `cp -p "${actualFile.path}" "${desiredFile.path}"`;
+      if (actualFile) {
+        return `cp -p "${actualFile.path}" "${desiredFile.path}"`;
+      } else if (sourceFile) {
+        return `cp -p "${join(desiredStructure.name, sourceFile.path)}" "${desiredFile.path}"`;
+      } else {
+        return undefined;
+      }
     })
     .filter((operation) => !!operation);
 }
