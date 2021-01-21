@@ -22,7 +22,7 @@ function getDirContentsAsTree(path: string): DirTree[] {
 
 export function pathToDirTree(path: string): DirTree {
   return {
-    name: path,
+    name: '',
     type: 'directory',
     contents: getDirContentsAsTree(path)
   };

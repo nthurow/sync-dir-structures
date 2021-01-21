@@ -55,7 +55,7 @@ describe('pathToDirTree', () => {
     });
 
     const expectedResult: DirTree = {
-      name: 'rootPath/rootDir',
+      name: '',
       type: 'directory',
       contents: [
         {
